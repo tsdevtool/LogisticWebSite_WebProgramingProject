@@ -1,0 +1,78 @@
+﻿@model LogisticsWebsite_WebProgramingProject.Models.BillOfLading
+
+
+
+
+<div class="Bill_Of_Lading_Details" style=" padding-top: 100px">
+    <h1>Bill of Lading Details</h1>
+
+    <form method="post" asp-controller="BillOfLading" asp-action="Details">
+        <div class="form-group">
+            <label for="billId">Enter Bill ID:</label>
+            <input type="text" class="form-control" id="billId" name="id">
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">View Details</button>
+    </form>
+    @if (Model != null)
+    {
+
+        <div>
+
+            <dl class="row">
+                <dt class="col-sm-2">
+                    Booking Information
+                </dt>
+                <dd class="col-sm-10">
+                    @Model.BookingNoNavigation.From - @Model.BookingNoNavigation.To
+
+                </dd>
+                <dt class="col-sm-2">
+                    CustOffSi - CustOffCy
+                </dt>
+                <dd class="col-sm-10">
+                    @Model.BookingNoNavigation.CutOffSi.ToString("dd/MM/yyyy") -
+                    @Model.BookingNoNavigation.CutOffCy.ToString("dd/MM/yyyy")
+                </dd>
+                <dt class="col-sm-2">
+                    Day Go - Day come
+                </dt>
+                <dd class="col-sm-10">
+                    @Model.Schedule.DayGo.ToString("dd/MM/yyyy") -
+                    @Model.Schedule.DayCome.ToString("dd/MM/yyyy")
+                </dd>
+                <dt class="col-sm-2">
+                    Status
+                </dt>
+                <dd class="col-sm-10">
+                    @{
+                        var trackingForBill = Model.Trackings.FirstOrDefault(t => t.BillId == Model.BillId);
+                        if (trackingForBill != null)
+                        {
+                            @trackingForBill.Status
+                        }
+
+                    }
+                </dd>
+
+                <dt class="col-sm-2">
+                    Warehouses-Dayin
+                </dt>
+                <dd class="col-sm-10">
+                    <ul>
+                        @foreach (var bookingWarehouse in Model.BookingWareHouses)
+                        {
+                            <li> ID:@bookingWarehouse.WhareHouse.WhareHouseId  - Day in: @bookingWarehouse.Dayin </li>
+                        }
+                    </ul>
+                </dd>
+
+            </dl>
+        </div>
+
+        <div>
+            <a asp-action="Index" asp-controller="Home">Back to Home</a>
+        </div>
+    }
+
+</div>

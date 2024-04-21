@@ -1,0 +1,184 @@
+﻿﻿* {
+    font-family: "Poppins", sans-serif;
+}
+
+.bodyy {
+    margin-top: 15%;
+    max-width: 100%;
+    max-height: 100%;
+    display: flex;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    /* background: rgb(130, 106, 251); */
+    background: linear-gradient(to right, #235cf2 10%, white 60%);
+}
+
+.Image-Containerr {
+    background-image: url('../images/coming-soon-container-cargo-x-webflow-template.png');
+    background-size: cover;
+    background-position: left top;
+    width: 700px;
+    float: left;
+    height: 100vh;
+}
+
+.containerr {
+    margin-top: 5%;
+    margin-right: 2%;
+    margin-bottom: 5%;
+    position: relative;
+    max-width: 700px;
+    width: 100%;
+    max-height: 600px;
+    overflow-y: auto;
+    background: #fff;
+    padding: 3%;
+    border-radius: 8px;
+    /*box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);*/
+}
+
+    .containerr::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    .containerr::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    .containerr::-webkit-scrollbar-thumb {
+        background: #6084e0;
+        border-radius: 5px;
+    }
+
+        .containerr::-webkit-scrollbar-thumb:hover {
+            background: #235cf2;
+        }
+
+
+    .containerr header {
+        padding-top: 5%;
+        font-size: 1.5rem;
+        color: #333;
+        font-weight: 500;
+        text-align: center;
+    }
+
+    .containerr .form {
+        margin-top: 30px;
+    }
+
+.form .input-box {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.input-box label {
+    color: #333;
+}
+
+.form :where(.input-box input, .select-box) {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    outline: none;
+    font-size: 1rem;
+    color: #707070;
+    margin-top: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0 15px;
+}
+
+.input-box input:focus {
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.form .column {
+    display: flex;
+    column-gap: 15px;
+}
+
+.form .Type-box {
+    margin-top: 20px;
+}
+
+.Type-box h3 {
+    color: #333;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.form :where(.Type-option, .Type) {
+    display: flex;
+    align-items: center;
+    column-gap: 50px;
+    flex-wrap: wrap;
+}
+
+.form .Type {
+    column-gap: 5px;
+}
+
+.Type input {
+    accent-color: #235cf2;
+}
+
+.form :where(.Type input, .Type label) {
+    cursor: pointer;
+}
+
+.Type label {
+    color: #707070;
+}
+
+.address :where(input, .select-box) {
+    margin-top: 15px;
+}
+
+.select-box select {
+    appearance: none;
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    color: #707070;
+    font-size: 1rem;
+}
+
+.submit_button {
+    height: 55px;
+    width: 100%;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    /* background: rgb(130, 106, 251); */
+    background: #a09d9d;
+}
+
+    .submit_button:hover {
+        /* background: rgb(88, 56, 250); */
+        background: #235cf2;
+    }
+
+.lable-title {
+    font-size: large;
+    font-weight: 600;
+}
+
+/*Responsive*/
+@media screen and (max-width: 500px) {
+    .form .column {
+        flex-wrap: wrap;
+    }
+
+    .form :where(.Type-option, .Type) {
+        row-gap: 15px;
+    }
+}

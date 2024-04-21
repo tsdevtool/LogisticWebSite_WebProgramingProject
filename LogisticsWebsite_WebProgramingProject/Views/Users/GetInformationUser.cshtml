@@ -1,0 +1,46 @@
+﻿@{
+	ViewData["Title"] = "User Information";
+	Layout = "_Layout";
+}
+
+<link href="~/css/user.css" rel="stylesheet" />
+<div class="container_card">
+	<div class="box_card">
+		<div class="item_card">
+			<a href="#" class="ag-courses-item_link">
+				<div class="ag-courses-item_bg">
+				</div>
+
+				<div class="ag-courses-item_title">
+					User Details
+				</div>
+				<img class="ag-courses-item_date-box" style="width:100px; height: 100px; padding-bottom:10px; background-color: transparent;" src="~/Images/user.png" />
+
+				@if (Model != null)
+				{
+					<div class="ag-courses-item_date-box">
+						Email: <b>@Model.Email</b>
+					</div>
+					<div class="ag-courses-item_date-box">
+						Full Name: <b>@Model.Name</b>
+					</div>
+					<div class="ag-courses-item_date-box">
+						Phone Number: <b>@Model.PhoneNumber</b>
+						
+					</div>
+					<div class="ag-courses-item_date-box" style="padding-bottom: 20px;">
+						Country/Region: <b>@Model.Country</b>
+					</div>
+
+					<a type="button" asp-controller="Users" asp-action="EditUser" class="ag-courses-item_date-box btn btn-outline-success" asp-route-id="@Model.Id">Update</a>
+					<a type="button" asp-controller="Home" asp-action="Index" class=" ag-courses-item_date-box btn btn-outline-light">Back to Home</a>
+				}
+				else
+				{
+					<p>User not found.</p>
+				}
+			</a>
+		</div>
+	</div>
+</div>
+

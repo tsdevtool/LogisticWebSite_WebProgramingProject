@@ -1,0 +1,241 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using LogisticsWebsite_WebProgramingProject.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>CargoX - @ViewData["Title"]</title>
+	<link rel="shortcut icon" href="https://assets-global.website-files.com/644fdfe30805352e528a6521/644fdfe3080535765d8a6572_black-logo-cargo-x-webflow-template.svg">
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="apple-touch-icon" sizes="57x57" href="/images/favicon/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/images/favicon/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/images/favicon/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/images/favicon/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/images/favicon/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/images/favicon/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/images/favicon/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/images/favicon/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192" href="/images/favicon/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/images/favicon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+	<link href="~/css/quotestyle.css" rel="stylesheet" />
+	<link href="~/css/FormStyle.css" rel="stylesheet" />
+	<link href="~/css/success.css" rel="stylesheet" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+		  rel="stylesheet" />
+
+</head>
+<body>
+
+	<header>
+		<!-- HEADER SECTION START HERE -->
+		<div class="header-main-con w-100 float-left">
+			<div class="container-fluid">
+				<nav class="navbar navbar-expand-lg navbar-light">
+					<a class="navbar-brand" href="index.html">
+						<figure class="mb-0">
+							<a asp-controller="Home" asp-action="Index">
+								<img src="https://assets-global.website-files.com/644fdfe30805352e528a6521/644fdfe3080535765d8a6572_black-logo-cargo-x-webflow-template.svg" alt="header-logo" loading="lazy">
+							</a>
+						</figure>
+					</a>
+					<button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
+							data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+							aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+						<span class="navbar-toggler-icon"></span>
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarSupportedContent" style="padding-top: 10px">
+						<ul class="navbar-nav">
+
+							<li class="nav-item dropdown" style="padding-left: 10px">
+								<a class="nav-link dropdown-toggle p-0" href="#" id="navbarDropdown2" role="button"
+								   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									Home
+								</a>
+
+								<div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+									<ul class="list-unstyled mb-0">
+										<li><a class="dropdown-item" asp-controller="Home" asp-action="Index">Home</a></li>
+
+									</ul>
+								</div>
+							</li>
+						
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle p-0" href="#" id="navbarDropdown2" role="button"
+								   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									Schedule
+								</a>
+								<div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+									<ul class="list-unstyled mb-0">
+										@* <li><a class="dropdown-item" asp-controller="BillOfLading" asp-action="Details">Tracking</a></li> *@
+										<li><a class="dropdown-item" asp-controller="Schedule" asp-action="Index">Schedule</a></li>
+									</ul>
+								</div>
+							</li>
+
+							<li class="nav-item">
+								<a class="nav-link p-0" asp-controller="Home" asp-action="Contact">Contact</a>
+							</li>
+
+
+							@if (!SignInManager.IsSignedIn(User))
+							{
+								<li class="nav-item">
+									<a class="nav-link p-0 text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link p-0 text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+								</li>
+							}
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle p-0" href="#" id="navbarDropdown3" role="button"
+								   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<i class="bi bi-person-circle"></i>
+								</a>
+								<div class="dropdown-menu" aria-labelledby="navbarDropdown3">
+									<ul class="list-unstyled mb-0">
+										@if (SignInManager.IsSignedIn(User))
+										{
+											<li class="nav-item" style="padding-left: 9px">
+												@if (User.IsInRole("Admin"))
+												{
+													<a id="manage" class="nav-link p-0 text-white" asp-controller="Admin" asp-action="Index" title="Manage">Manage</a>
+												}
+												else
+												{
+													<a id="manage" class="nav-link p-0 text-white" asp-area="Identity" asp-page="/Account/Manage/Index"  title="Manage">Profile</a>
+												}
+											</li>
+											<li class="nav-item p-0">
+												<form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+													<button id="logout" type="submit" class="nav-link btn btn-link text-white border-0">Logout</button>
+												</form>
+											</li>
+										}
+
+
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</div>
+					@if (SignInManager.IsSignedIn(User))
+					{
+						<div class="nav-btns d-flex align-items-center">
+							<div class="chat-btn">
+								<a asp-controller="BillOfLading" asp-action="Details">Track Now</a>
+							</div>
+							<div class="header-support-btn">
+								<a asp-controller="BookingInfomation" asp-action="Add"><i class="fas fa-file-alt"></i> Get a Quote</a>
+							</div>
+
+						</div>
+					}
+				</nav>
+
+			</div>
+		</div>
+
+	</header>
+	<div class="container">
+		<main role="main" class="pb-3">
+			@RenderBody()
+		</main>
+	</div>
+
+	<footer>
+		<div class="footer-section w-100 float-left">
+			<div class="container">
+				<div class="footer-inner-con">
+					<div class="footer-box footer-logo-box">
+						<a href="index.html">
+							<figure>
+								<img src="~/images/track-left-shape.png" alt="footer-logo" />
+							</figure>
+						</a>
+						<p>
+							Receive all the important information and news about CargoX through our occasional newsletter and social media.
+						</p>
+						<div class="footer-social-links">
+							<ul class="list-unstyled mb-0">
+								<li>
+									<a href="https://www.facebook.com/login/"><i class="fab fa-facebook-f"></i></a>
+								</li>
+								<li>
+									<a href="https://twitter.com/i/flow/login"><i class="fab fa-twitter"></i></a>
+								</li>
+								<li>
+									<a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="footer-box footer-pages-links">
+						<h3>Quick Links</h3>
+						<ul class="list-unstyled mb-0">
+							<li><a asp-action="index" asp-controller="Home">Home</a></li>
+							<li><a asp-action="Add" asp-controller="BookingInfomation">Booking</a></li>
+							<li><a asp-action="Contact" asp-controller="Home">Contact</a></li>
+						</ul>
+					</div>
+					<div class="footer-box contact-details-box">
+						<h3>Contact Info</h3>
+						<ul class="list-unstyled mb-0">
+							<li><i class="fas fa-phone-alt"></i> <a href="tel:+568925896325">1800 1188</a></li>
+							<li>
+								<i class="fas fa-map-marker-alt"></i> <a href="https://maps.app.goo.gl/K4sjRjxeY5x7eE6B7">
+									722 Điện Biên Phủ, Phường 22, Quận Bình Thạnh, Tp. Hồ Chí Minh, Việt Nam
+								</a>
+							</li>
+							<li><i class="fas fa-envelope"></i> <a href="mailto:info@medwell.com">info@cargo.com</a></li>
+						</ul>
+					</div>
+					<div class="footer-box footer-newsletter">
+						<h3>Newsletter</h3>
+						<ul class="list-unstyled mb-0">
+							<li>
+								<input type="email" placeholder="Your Email Address:">
+								<button type="submit"><i class="fas fa-paper-plane"></i></button>
+							</li>
+							<li class="checkbox-con mb-0">
+								<input type="checkbox" id="accept" name="accept" value="accept">
+								<label class="mb-0" for="accept">
+									Sign up to receive the latest notifications.
+								</label>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="copyright-con w-100 float-left">
+			<p class="mb-0">Copyright © 2024 Cargo X | All rights reserved.</p>
+		</div>
+		<a id="button"></a>
+	</footer>
+	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+	<script>
+		AOS.init();
+	</script>
+	<script src="/js/contract.js"></script>
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

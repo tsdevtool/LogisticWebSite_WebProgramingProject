@@ -1,0 +1,34 @@
+﻿@model LogisticsWebsite_WebProgramingProject.Models.ApplicationUser
+@using Microsoft.AspNetCore.Mvc.Rendering
+
+<h1 style="padding-top: 100px;">Edit User</h1>
+@if (Model != null)
+{
+
+    <form asp-action="UpdateUser" >
+        <input type="hidden" asp-for="Id">  
+        <div class="form-group">
+            <label asp-for="Email">Email: </label>
+            <input asp-for="Email" class="form-control">
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <label asp-for="FullName">Full Name: </label>
+            <input asp-for="FullName" class="form-control">
+            @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <label asp-for="PhoneNumber">Phone Number: </label>
+            <input asp-for="PhoneNumber" class="form-control">
+            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <label asp-for="CountryRegion">Country/Region: </label>
+            <input asp-for="CountryRegion" class="form-control">
+            @Html.ValidationMessageFor(model => model.CountryRegion, "", new { @class = "text-danger" })
+        </div>
+
+
+        <button type="submit" asp-for="Id" style="padding-top:10px;" class="btn btn-outline-info">Update User</button>
+    </form>
+}

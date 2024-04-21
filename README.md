@@ -1,4 +1,4 @@
-# LogisticWebSite_WebProgramingProject
+# LogisticsWebsite_WebProgramingProject2
 
 
 
@@ -15,14 +15,14 @@ Already a pro? Just edit this README.md and make it your own. Want to make it ea
 
 ```
 cd existing_repo
-git remote add origin https://gitlab.com/sieu3213/logisticwebsite_webprogramingproject.git
+git remote add origin https://gitlab.com/sieu3213/logisticswebsite_webprogramingproject2.git
 git branch -M main
 git push -uf origin main
 ```
 
 ## Integrate with your tools
 
-- [ ] [Set up project integrations](https://gitlab.com/sieu3213/logisticwebsite_webprogramingproject/-/settings/integrations)
+- [ ] [Set up project integrations](https://gitlab.com/sieu3213/logisticswebsite_webprogramingproject2/-/settings/integrations)
 
 ## Collaborate with your team
 

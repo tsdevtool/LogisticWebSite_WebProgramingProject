@@ -1,0 +1,38 @@
+﻿@model LogisticsWebsite_WebProgramingProject.Models.Container
+@{
+    ViewData["Title"] = "Add Container";
+}
+
+<h1>Add Container</h1>
+
+<form asp-action="AddContainer" method="post">
+    <div class="form-group">
+        <label asp-for="CargoWeight">Cargo Weight</label>
+        <input asp-for="CargoWeight" class="form-control" />
+        <span asp-validation-for="CargoWeight" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ContainerSize">Container Size</label>
+        <input asp-for="ContainerSize" class="form-control" />
+        <span asp-validation-for="ContainerSize" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="NumberOfContainer">Number Of Container</label>
+        <input asp-for="NumberOfContainer" class="form-control" />
+        <span asp-validation-for="NumberOfContainer" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Type">Type</label>
+        <select asp-for="Type" class="form-control">
+            <option value="true">True</option>
+            <option value="false">False</option>
+        </select>
+        <span asp-validation-for="Type" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PlaceToPickUp">Place To Pick Up</label>
+        <input asp-for="PlaceToPickUp" class="form-control" />
+        <span asp-validation-for="PlaceToPickUp" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Container</button>
+</form>

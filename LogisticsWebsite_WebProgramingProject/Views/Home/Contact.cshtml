@@ -1,0 +1,103 @@
+﻿@{
+    Layout = null;
+}
+
+<link href="~/css/contract.css" rel="stylesheet" />
+<div class="contact-container">
+    <div class="left-col">
+        <a href="http://localhost:5151/">
+            <img class="logo" src="https://assets-global.website-files.com/638f532e7e769f0c4f3fbb53/638f57bd433726566df45245_black-logo-cargo-x-webflow-template.svg" />
+        </a>
+    </div>
+    <div class="right-col">
+        <div class="theme-switch-wrapper">
+        </div>
+        <h1>Contact us</h1>
+        <p>Have some questions? Contact us via email, we will reply to you as soon as possible.</p>
+
+        <form id="contact-form" method="post">
+            <label for="name">Full name</label>
+            <input type="text" id="name" name="name" placeholder="Your Full Name" required>
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="Your Email Address" required>
+            <label for="message">Message</label>
+            <textarea rows="6" placeholder="Your Message" id="message" name="message" required></textarea>
+            <!--<a href="javascript:void(0)">--><button type="submit" id="submit" name="submit">Send</button><!--</a>-->
+
+        </form>
+        <div id="error"></div>
+        <div id="success-msg"></div>
+    </div>
+</div>
+
+<div class="faq_body">
+    <h1 class="faq_title">Frequently Asked Questions</h1>
+    <div class='faq-container'>
+        <div class="faq">
+            <h3 class="faq-title">In which countries does CargoX provide its services? </h3>
+            <p class="faq-text">CargoX provides services in most countries from Asia, Europe and Americas. Immediate quotes are available for key routes in each country.</p>
+            <button class='faq-toggle'>
+                <svg class="chevron w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 8">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 5.326 5.7a.909.909 0 0 0 1.348 0L13 1" />
+                </svg>
+
+                <svg class="close w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                </svg>
+            </button>
+        </div>
+        <div class="faq">
+            <h3 class="faq-title">How long does transportation typically take? </h3>
+            <p class="faq-text">• USA: 15-20 days to warehouse entry. Arrival in USEC areas (such as New Jersey,New York, etc.) is 25-30 days.</p>
+            <p class="faq-text">
+                • Asia: 5-10 days to warehouse entry.
+            </p>
+            <p class="faq-text">
+                • Europe: 30-35 days to warehouse entry.
+            </p>
+            <button class='faq-toggle'>
+                <svg class="chevron w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 8">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 5.326 5.7a.909.909 0 0 0 1.348 0L13 1" />
+                </svg>
+
+                <svg class="close w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                </svg>
+            </button>
+        </div>
+        <div class="faq ">
+            <h3 class="faq-title">Still have questions?</h3>
+            <p class="faq-text">
+                Contact us!
+            </p>
+            <p class="faq-text">
+                • Email: CargoX@contact.com
+            </p>
+            <p class="faq-text">
+                • Hotline: 1800 8811
+            </p>
+            <p class="faq-text">
+                • 722 Điện Biên Phủ, Phường 22, Quận Bình Thạnh, Tp. Hồ Chí Minh, Việt Nam
+            </p>
+            <button class='faq-toggle'>
+                <svg class="chevron w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 8">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 5.326 5.7a.909.909 0 0 0 1.348 0L13 1" />
+                </svg>
+
+                <svg class="close w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const buttons = document.querySelectorAll('.faq-toggle');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            button.parentNode.classList.toggle('active');
+        })
+    })
+</script>

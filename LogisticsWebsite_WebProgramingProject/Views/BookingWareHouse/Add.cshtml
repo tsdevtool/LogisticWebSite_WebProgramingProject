@@ -1,0 +1,31 @@
+﻿@model LogisticsWebsite_WebProgramingProject.Models.BookingWareHouse
+@using Microsoft.AspNetCore.Mvc.Rendering
+
+<body>
+    <div class="bodyy">
+        <!-- Container image -->
+        <section class="Image-Containerr">
+        </section>
+        <!-- Registration Form -->
+        <section class="containerr">
+            <header>Registration Form</header>
+            <form asp-action="Add" method="post">
+                <div class="input-box address">
+                    <label>Bill ID</label>
+                    <input asp-for="BillId" class="form-control" required />
+                    <span asp-validation-for="BillId" class="text-danger"></span>
+                </div>
+
+                <div class="column">
+                    <div class="input-box">
+                        <label>Warehouse</label>
+                        <select asp-for="WhareHouseId" class="form-control" asp-items="@ViewBag.WarehouseList">
+                            <option value="">-- Select Warehouse --</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="submit_button">ADD</button>
+            </form>
+        </section>
+    </div>
+</body>

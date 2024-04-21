@@ -1,0 +1,85 @@
+﻿@model LogisticsWebsite_WebProgramingProject.Models.BookingInfomation
+@using Microsoft.AspNetCore.Mvc.Rendering
+
+<body>
+    <div class="bodyy">
+        <!-- Container image -->
+        <section class="Image-Containerr">
+        </section>
+        <!-- Registration Form -->
+        <section class="containerr">
+            <header>Registration Form</header>
+            <form asp-action="Add" method="post" enctype="multipart/form-data">
+                <div class="input-box address">
+                    <label>Commodity Description</label>
+                    <textarea asp-for="Commodity" class="form-control" required></textarea>
+                    <span asp-validation-for="Commodity" class="text-danger"></span>
+                </div>
+
+
+
+                <div class="input-box address">
+                    <label asp-for="CutOffVgm"> Gross weight</label>
+                    <textarea asp-for="CutOffVgm" class="form-control"></textarea>
+                    <span asp-validation-for="CutOffVgm" class="text-danger"></span>
+
+                </div>
+                <div class="column">
+                    <div class="input-box">
+                        <label asp-for="From">Port of Loading</label>
+                        <select asp-for="From" class="form-control" required>
+                            <option value=""></option>
+                            @foreach (var port in ViewBag.Ports)
+                            {
+                                <option value="@port.Value">@port.Text</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="input-box">
+
+                        <label asp-for="To">Port of Discharge</label>
+                        <select asp-for="To" class="form-control" required>
+                            <option value=""></option>
+                            @foreach (var port in ViewBag.Ports)
+                            {
+                                <option value="@port.Value">@port.Text</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="input-box address">
+
+                    <label asp-for="PriceOwner"></label>
+
+                    <select asp-for="PriceOwner" class="form-control">
+                        @foreach (var option in ViewBag.PriceOwnerOptions)
+                        {
+                            <option value="@option.Value">@option.Text</option>
+                        }
+                    </select>
+                </div>
+                <button class="submit_button">Continue</button>
+
+            </form>
+        </section>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#From").change(function () {
+            // Lấy giá trị của cảng xuất phát được chọn
+            var selectedPort = $(this).val();
+
+            // Lặp qua tất cả các lựa chọn trong dropdown list của cảng đích
+            $("#To option").each(function () {
+                // Nếu giá trị của lựa chọn trùng với cảng xuất phát được chọn, ẩn lựa chọn đó
+                if ($(this).val() === selectedPort) {
+                    $(this).hide();
+                } else {
+                    $(this).show();
+                }
+            });
+        });
+    });
+</script>

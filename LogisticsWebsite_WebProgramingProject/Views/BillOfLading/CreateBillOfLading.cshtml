@@ -1,0 +1,22 @@
+﻿@model LogisticsWebsite_WebProgramingProject.Models.BillOfLading
+<form asp-action="CreateBillOfLading" method="post">
+    <div class="bodyy">
+        <!-- Container image -->
+        <section class="Image-Containerr">
+        </section>
+        <!-- Registration Form -->
+        <div class="containerr">
+            <div class="input-box">
+                <label for="containerId">Container:</label>
+                @Html.DropDownListFor(model => model.ContainerId, ViewBag.ContainerSelectList as List<SelectListItem>, "Select Container", new { @class = "form-control", @required = "required" })
+            </div>
+            <input type="hidden" name="BookingNo" value="@ViewBag.BookingNo" /> <!-- Ensure the name matches the parameter name in the action method -->
+            <!-- Dropdownlist for Schedule -->
+            <div class="input-box">
+                <label for="scheduleId">Schedule:</label>
+                @Html.DropDownListFor(model => model.ScheduleId, (SelectList)ViewBag.Schedules, "Select Schedule", new { @class = "form-control", @required = "required" })
+            </div>
+            <button class="submit_button" type="submit">Continue</button> <!-- Ensure you have a submit button -->
+        </div>
+    </div>
+</form>

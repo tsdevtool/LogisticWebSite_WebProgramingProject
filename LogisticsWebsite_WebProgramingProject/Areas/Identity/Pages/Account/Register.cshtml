@@ -1,0 +1,80 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+<link href="~/css/loginform.css" rel="stylesheet" />
+
+
+<div class="wrapper">
+    <div class="login-box">
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <div class="login-header">
+                <span>Register</span>
+            </div>
+            @* <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div> *@
+            <div class="input-box">
+                <input asp-for="Input.Email" type="text"  id="user" class="form-control input-field" autocomplete="username" aria-required="true"/>
+                <label asp-for="Input.Email" class="label">Email</label>
+                <i class="bx bx-user icon" asp-validation-for="Input.Email"></i>
+            </div>
+            <div class="input-box">
+                <input asp-for="Input.Password" id="user" class="form-control input-field" autocomplete="new-password" aria-required="true" />
+                <label asp-for="Input.Password" class="label">Password</label>
+                <i class="bx bx-user icon" asp-validation-for="Input.Password"></i>
+            </div>
+            <div class="input-box">
+                <input asp-for="Input.ConfirmPassword" id="user" class="form-control input-field" autocomplete="new-password" aria-required="true"/>
+                <label asp-for="Input.ConfirmPassword" class="label">Confirm Password</label>
+                <i asp-validation-for="Input.ConfirmPassword" class="bx bx-user icon"></i>
+            </div>
+            @*Full Name*@
+            <div class="input-box">
+                <input asp-for="Input.FullName" class="form-control input-field" autocomplete="username" aria-required="true"/>
+                <label asp-for="Input.FullName" class="label">Full Name</label>
+                <i asp-validation-for="Input.FullName" class="bx bx-user icon"></i>
+            </div>
+            @*Country/Region*@
+            <div class="input-box">
+                <input asp-for="Input.CountryRegion" id="user" class="form-control input-field" autocomplete="username" aria-required="true"/>
+                <label asp-for="Input.CountryRegion" class="label">Country/Region</label>
+                <i asp-validation-for="Input.CountryRegion" class="bx bx-user icon"></i>
+            </div>
+            <button id="registerSubmit" type="submit" class="input-submit">Register</button>
+        </form>
+    </div>
+    @* <div class="col-md-6 col-md-offset-2">
+        <section>
+            <h3>Use another service to register.</h3>
+            <hr />
+            @{
+                if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                {
+                    <div>
+                        <p>
+                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
+                            about setting up this ASP.NET application to support logging in via external services</a>.
+                        </p>
+                    </div>
+                }
+                else
+                {
+                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                        <div>
+                            <p>
+                                @foreach (var provider in Model.ExternalLogins!)
+                                {
+                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                }
+                            </p>
+                        </div>
+                    </form>
+                }
+            }
+        </section>
+    </div> *@
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

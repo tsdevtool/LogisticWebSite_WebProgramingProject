@@ -1,0 +1,84 @@
+﻿@using LogisticsWebsite_WebProgramingProject.Models;
+@model IEnumerable<LogisticsWebsite_WebProgramingProject.Models.Schedule>
+@{
+	ViewData["Title"] = "Index";
+
+	var _context = new LogisticsContext();
+
+}
+<link href="~/css/assets/css/app.min.css" rel="stylesheet" />
+@* <link href="~/css/Schedule.css" rel="stylesheet" /> *@
+<div class="row" style="padding-top: 200px;">
+	<div class="search-container">
+		<label for="search-pod">POD: </label>
+		<input class="form-control me-2" type="text" id="search-pod" name="search-pod" placeholder="POD" aria-label="Search">
+		@* <input type="text" id="search-pod" name="search-pod"> *@
+		<label for="search-pol">POL: </label> 
+		<input class="form-control me-2" type="text" id="search-pol" name="search-pol" placeholder="POL" aria-label="Search">
+		@* <input type="text" id="search-pol" name="search-pol">   *@
+		@* <button type="button" onclick="searchByPorts()">Search</button> *@
+		<button class="btn btn-outline-success" type="button" onclick="searchByPorts()">Search</button>
+	</div>
+</div>
+<div class="table">
+	<div class="card-container row">
+		@foreach (var sche in Model)
+		{
+			<div class="col-md-4 mb-4" >
+				<div class="card" style="background-color: #cddcf7;">
+					<div class="card-body">
+						@{
+							var podOrder = await _context.Ports.FindAsync(sche.Pod);
+							var polOrder = await _context.Ports.FindAsync(sche.Pol);
+
+							if (podOrder != null && polOrder != null)
+							{
+								var podOrderName = podOrder.Name;
+								var polOrderName = polOrder.Name;
+								<h5 class="card-title">Schedule: @podOrderName -> @polOrderName</h5>
+							}
+						}
+						<div class="card-text">Ship Name: @sche.Ship.ShipName</div>
+						<div class="card-text">Day Go: @sche.DayGo - @sche.DayCome</div>
+						<div class="card-text">Time Go: @sche.TimeGo</div>
+						@{
+							float pri = (float)sche.Price;
+							<div class="card-text">Price: $@pri</div>
+						}
+						<button class="btn btn-secondary" type="button" onclick="location.href='@Url.Action("Add", "BookingInfomation")'">Book</button>
+					</div>
+				</div>
+			</div>
+		}
+	</div>
+</div>
+
+<script>
+	function searchByPorts() {
+		var podInput, polInput, filterPod, filterPol, cards, cardContainer, podOrderName, polOrderName, i, txtValue;
+
+		podInput = document.getElementById('search-pod');
+		polInput = document.getElementById('search-pol');
+		filterPod = podInput.value.toLowerCase(); // Convert input to lowercase for case-insensitive search
+		filterPol = polInput.value.toLowerCase(); // Convert input to lowercase for case-insensitive search
+
+		cardContainer = document.getElementsByClassName('card-container')[0];
+		cards = cardContainer.getElementsByClassName('card-body');
+
+		for (i = 0; i < cards.length; i++) {
+			podOrderName = cards[i].querySelector('.card-title').innerText.toLowerCase();
+			polOrderName = cards[i].querySelector('.card-title').innerText.toLowerCase();
+
+			// Check if either podOrderName or polOrderName includes either filter
+			var isMatching = (podOrderName.includes(filterPod) || podOrderName.includes(filterPol)) &&
+				(polOrderName.includes(filterPod) || polOrderName.includes(filterPol));
+
+			if (isMatching) {
+				cards[i].style.display = '';
+			} else {
+				cards[i].style.display = 'none';
+			}
+		}
+	}
+</script>
+

@@ -1,0 +1,23 @@
+﻿@model int
+<body>
+    <!-- Congratulations area start -->
+    <div class="congratulation-area text-center mt-5" style="padding-top: 20px">
+        <div class="container">
+            <div class="congratulation-wrapper">
+                <div class="congratulation-contents center-text">
+                    <div class="congratulation-contents-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h4 class="congratulation-contents-title"> Quote successful! </h4>
+                    <p class="congratulation-contents-para"> Our system is analyzing your request and will provide your quote's Bill ID: " @Model "   within 20 minutes. </p>
+                    <div class="btn-wrapper mt-4">
+                        <a class="cmn-btn btn-bg-1" asp-controller="Home" asp-action="Index"> Go to Home </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Congratulations area end -->
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>

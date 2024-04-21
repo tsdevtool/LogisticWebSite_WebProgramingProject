@@ -1,0 +1,33 @@
+﻿@model IEnumerable<LogisticsWebsite_WebProgramingProject.Models.Schedule>
+
+<h1>Schedule Index</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Schedule ID</th>
+            <th>Ship ID</th>
+            <th>Pol</th>
+            <th>Pod</th>
+            <th>Day Go</th>
+            <th>Time Go</th>
+            <th>Day Come</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ScheduleId</td>
+                <td>@item.ShipId</td>
+                <td>@item.PolNavigation.Name</td>
+                <td>@item.PodNavigation.Name</td>
+                <td>@item.DayGo</td>
+                <td>@(item.TimeGo.HasValue ? item.TimeGo.Value.ToString() : "")</td>
+                <td>@item.DayCome</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
